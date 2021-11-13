@@ -1989,7 +1989,6 @@ class PtyTests(unittest.TestCase):
         pass
 
     def run_child(self, child, terminal_input):
-        print ("in def run_child()")
         old_sighup = signal.signal(signal.SIGHUP, self.handle_sighup)
         try:
             return self._run_child(child, terminal_input)
