@@ -2065,7 +2065,6 @@ class PtyTests(unittest.TestCase):
         return lines
 
     def check_input_tty(self, prompt, terminal_input, stdio_encoding=None):
-        # import pdb;pdb.set_trace()
         if not sys.stdin.isatty() or not sys.stdout.isatty():
             self.skipTest("stdin and stdout must be ttys")
         def child(wpipe):
