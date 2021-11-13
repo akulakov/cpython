@@ -1997,7 +1997,6 @@ class PtyTests(unittest.TestCase):
             signal.signal(signal.SIGHUP, old_sighup)
 
     def _run_child(self, child, terminal_input):
-        print ("in def _run_child()")
         r, w = os.pipe()  # Pipe test results from child back to parent
         try:
             pid, fd = pty.fork()
@@ -2067,7 +2066,6 @@ class PtyTests(unittest.TestCase):
         return lines
 
     def check_input_tty(self, prompt, terminal_input, stdio_encoding=None):
-        print ("in def check_input_tty()")
         # import pdb;pdb.set_trace()
         if not sys.stdin.isatty() or not sys.stdout.isatty():
             self.skipTest("stdin and stdout must be ttys")
@@ -2099,15 +2097,15 @@ class PtyTests(unittest.TestCase):
         # is different and invokes GNU readline if available).
         self.check_input_tty("prompt", b"quux")
 
-    def Xtest_input_tty_non_ascii(self):
+    def test_input_tty_non_ascii(self):
         # Check stdin/stdout encoding is used when invoking GNU readline
         self.check_input_tty("prompté", b"quux\xe9", "utf-8")
 
-    def Xtest_input_tty_non_ascii_unicode_errors(self):
+    def test_input_tty_non_ascii_unicode_errors(self):
         # Check stdin/stdout error handler is used when invoking GNU readline
         self.check_input_tty("prompté", b"quux\xe9", "ascii")
 
-    def Xtest_input_no_stdout_fileno(self):
+    def test_input_no_stdout_fileno(self):
         # Issue #24402: If stdin is the original terminal but stdout.fileno()
         # fails, do not use the original stdout file descriptor
         def child(wpipe):
