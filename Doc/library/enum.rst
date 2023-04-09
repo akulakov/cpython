@@ -713,7 +713,7 @@ Data Types
 
    .. attribute:: CONFORM
 
-      Out-of-range values have invalid values removed, leaving a valid *Flag*
+      Out-of-range values have invalid bits discarded, leaving a valid *Flag*
       value. This is the default for :class:`Flag`::
 
          >>> from enum import Flag, CONFORM, auto
